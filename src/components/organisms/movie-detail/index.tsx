@@ -16,7 +16,7 @@ const MovieDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
-  const { data: movieDetails, isFetching, error } = useFetch<MovieDetails>(
+  const { data, isFetching } = useFetch<MovieDetails>(
     '3/movie/${id}?',
     {},
     '',
