@@ -8,19 +8,12 @@ import CardMovie from "../../molecules/card-movie";
 
 export default function Home() {
     const [page, setPage] = useState(1);
-    const [search, setSearch] = useState('');
-    const [category, setCategory] = useState('');
 
     // Requisicao na api
-    const { data, isFetching } = useFetch<movieProps[]>(
-        search
-            ? `3/search/movie?&query=${encodeURIComponent(
-                search
-            )}&page=${page}${category ? `&with_genres=${category}` : ''}`
-            : `3/movie/top_rated?&page=${page}`,
+    const { data, isFetching } = useFetch<movieProps[]>(`3/movie/top_rated?&page=${page}`,
         {},
         'results',
-        [page, search, category]
+        [page]
     );
 
     return (
